@@ -40,63 +40,63 @@
     
                         <div class="p-3">
 
-<form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
-    @csrf
-    {{-- name --}}
-    <div class="form-group mb-3 row">
-        <div class="col-12">
-            <input class="form-control" id="name" type="text" name="name"  placeholder="Name" required  ="" />
-        </div>
-    </div>
+                            <form class="form-horizontal mt-3" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                {{-- name --}}
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input class="form-control" id="name" type="text" name="name"  placeholder="Name" required  ="" />
+                                    </div>
+                                </div>
 
-    {{-- username --}}
-    <div class="form-group mb-3 row">
-        <div class="col-12">
-            <input id="username" class="form-control" type="text" name="username" placeholder="Username" required ="" />
-        </div>
-    </div>
+                                {{-- username --}}
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input id="username" class="form-control" type="text" name="username" placeholder="Username" required ="" />
+                                    </div>
+                                </div>
 
-    {{-- email --}}
-    <div class="form-group mb-3 row">
-        <div class="col-12">
-            <input id="email" class="form-control" type="email" name="email" placeholder="Email" required ="" />
-        </div>
-    </div>
+                                {{-- email --}}
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input id="email" class="form-control" type="email" name="email" placeholder="Email" required ="" />
+                                    </div>
+                                </div>
 
-    {{-- password --}}
-    <div class="form-group mb-3 row">
-        <div class="col-12">
-            <input id="password" class="form-control" type="password" name="password" placeholder="Password" required ="" />
-        </div>
-    </div>
+                                {{-- password --}}
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input id="password" class="form-control" type="password" name="password" placeholder="Password" required ="" />
+                                    </div>
+                                </div>
 
-    {{-- confirm_password --}}
-    <div class="form-group mb-3 row">
-        <div class="col-12">
-            <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation" required ="" />
-        </div>
-    </div>
+                                {{-- confirm_password --}}
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Password Confirmation" required ="" />
+                                    </div>
+                                </div>
 
-    <div class="form-group mb-3 row">
-        <div class="col-12">
-            <div class="custom-control custom-checkbox">
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <div class="custom-control custom-checkbox">
 
-            </div>
-        </div>
-    </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-    <div class="form-group text-center row mt-3 pt-1">
-        <div class="col-12">
-            <button class="btn btn-info w-100 waves-effect waves-light" type="submit">Register</button>
-        </div>
-    </div>
+                                <div class="form-group text-center row mt-3 pt-1">
+                                    <div class="col-12">
+                                        <button class="btn btn-info w-100 waves-effect waves-light" type="submit">Register</button>
+                                    </div>
+                                </div>
 
-    <div class="form-group mt-2 mb-0 row">
-        <div class="col-12 mt-3 text-center">
-            <a href="{{ route('login') }}" class="text-muted">Already have account?</a>
-        </div>
-    </div>
-</form>
+                                <div class="form-group mt-2 mb-0 row">
+                                    <div class="col-12 mt-3 text-center">
+                                        <a href="{{ route('login') }}" class="text-muted">Already have account?</a>
+                                    </div>
+                                </div>
+                            </form>
                             <!-- end form -->
                         </div>
                     </div>
