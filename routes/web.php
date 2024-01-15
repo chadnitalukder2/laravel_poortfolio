@@ -24,3 +24,5 @@ Route::controller(AdminController::class)->group(function(){
 // });
 
 require __DIR__.'/auth.php';
+
+
