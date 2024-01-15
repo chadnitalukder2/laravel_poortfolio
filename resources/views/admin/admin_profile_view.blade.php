@@ -19,7 +19,6 @@
                        <hr>
 
                         <a href="" class="btn btn-info btn-rounded waves-effect">Edit Profile </a>
-                     
                     </div>
                 </div>
             </div>
