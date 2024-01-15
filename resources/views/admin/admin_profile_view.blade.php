@@ -17,6 +17,7 @@
                        <hr>
                         <h4 class="card-title">Username : {{ $adminData->username }}</h4>
                        <hr>
+                       
                         <a href="" class="btn btn-info btn-rounded waves-effect">Edit Profile </a>
                      </div>
                 </div>
