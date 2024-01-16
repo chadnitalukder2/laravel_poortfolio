@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
  
 <div class="page-content">
     <div class="container-fluid">
@@ -29,21 +30,21 @@
                              <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="text" name="username"  id="username" value="{{ $editData->username }}" >
+                                    <input class="form-control" type="text" name="username"  id="" value="{{ $editData->username }}" >
                                 </div>
                             </div>
                              <!-- end row -->
                              <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Profile Image</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="file" name="profile_image"  id="username" value="{{ $editData->username }}" >
+                                    <input class="form-control" type="file" name="profile_image"  id="image"  >
                                 </div>
                             </div>
                              <!-- end row -->
                              <div class="row mb-3">
                                 <div class="col-sm-10">
                                     <label for="example-text-input" class="col-sm-2 col-form-label"></label>
-                                    <img class="rounded avatar-lg " src=" {{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                                    <img id="showImage" class="rounded avatar-lg " src=" {{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
                                 </div>
                             </div>
                              <!-- end row -->
@@ -56,7 +57,20 @@
 
     </div>
 </div>
-    
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+
+</script>
+
 @endsection
 
 
