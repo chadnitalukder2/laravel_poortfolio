@@ -24,6 +24,7 @@
                                 </div>
                             </div>
                              <!-- end row -->
+
                              <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Short Title</label>
                                 <div class="col-sm-10">
@@ -31,6 +32,7 @@
                                 </div>
                             </div>
                              <!-- end row -->
+                             
                              <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Short Description</label>
                                 <div class="col-sm-10">
