@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
+use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,13 @@ Route::controller(AboutController::class)->group(function(){
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
+
+
+//portfolio all route
+Route::controller(PortfolioController::class)->group(function(){
+    Route::get('/home/slide', 'HomeSlider')->name('home.slide');
+});
+
 
 require __DIR__.'/auth.php';
 

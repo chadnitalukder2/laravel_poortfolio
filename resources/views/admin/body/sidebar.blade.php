@@ -35,6 +35,17 @@
             <li><a href="{{ route('about.slide') }}">About Slide</a></li>
         </ul>
     </li>
+
+    <li>
+        <a href="javascript: void(0);" class="has-arrow waves-effect">
+            <i class="ri-mail-send-line"></i>
+            <span>Portfolio Page Setup</span>
+        </a>
+        <ul class="sub-menu" aria-expanded="false">
+            <li><a href="{{ route('about.slide') }}">All Portfolio</a></li>
+            <li><a href="{{ route('about.slide') }}">Add Portfolio</a></li>
+        </ul>
+    </li>
                 <li class="menu-title">Pages</li>
 
                 <li>
