@@ -3,12 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        @php
-            $id = Auth::user()->id; 
-            $adminData = App\Models\User::find($id);
-        @endphp
 
-        <title>{{ $adminData->name }} - Personal Portfolio HTML Template</title>
+        <title>Puja - Personal Portfolio HTML Template</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
