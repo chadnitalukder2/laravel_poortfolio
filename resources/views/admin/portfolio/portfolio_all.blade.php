@@ -45,7 +45,6 @@
                                                 <img src="{{asset($item->portfolio_image)  }}" style="width: 60px; height:50px;">
                                             </td>
                                             
-                                            
                                             <td>
                                                 <a href="" class="btn btn-info sm" title="Edit Data">
                                                     <i class="fas fa-edit"></i>
