@@ -34,6 +34,10 @@ Route::controller(HomeSliderController::class)->group(function(){
 Route::controller(AboutController::class)->group(function(){
     Route::get('/about/slide', 'AboutSlider')->name('about.slide');
     Route::post('/update/AboutSlider', 'UpdateAboutSlider')->name('update.AboutSlider');
+
+    Route::get('/about', 'HomeAbout')->name('home.about');
+   
+    Route::get('/about/multiImage', 'AboutMultiImage')->name('about.multiImage');
 });
 
 // Route::middleware('auth')->group(function () {
@@ -47,7 +51,7 @@ Route::controller(AboutController::class)->group(function(){
 Route::controller(PortfolioController::class)->group(function(){
     Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');
     Route::get('/add/portfolio', 'AddPortfolio')->name('add.portfolio');
-    
+
 });
 
 
