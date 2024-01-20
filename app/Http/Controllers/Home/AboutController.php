@@ -9,12 +9,14 @@ use Image;
 
 class AboutController extends Controller
 {
-    public function AboutSlider(){
+    public function AboutSlider()
+    {
         $aboutSlide = About::find(1) ;
         return view('admin.about_page.about_page_all', compact('aboutSlide'));
-    }
+    }//End
 
-    public function UpdateAboutSlider(Request $request){
+    public function UpdateAboutSlider(Request $request)
+    {
         $about_id = $request->id;
 
         if($request->file('about_slide')){
@@ -52,11 +54,17 @@ class AboutController extends Controller
             ); 
             return redirect()->back()->with($notification);
         }//end else
-    }
+    }//End
 
-
-    public function HomeAbout(){
+    public function HomeAbout()
+    {
         $aboutSlide = About::find(1) ;
         return view('frontend.body.about_page', compact('aboutSlide'));
-    }
+    }//End
+
+    public function AboutMultiImage()
+    {
+         return view('admin.about_page.multiImage');
+    }//End
+
 }
