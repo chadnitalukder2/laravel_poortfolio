@@ -12,7 +12,7 @@
 
                         <h4 class="card-title">Protfolio Edit Page </h4>
 
-                        <form method="post" action="{{ route('update.protfolio') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('update.portfolio') }}" enctype="multipart/form-data">
                             @csrf
 
                             <input type="hidden" name="id" value="{{ $portfolio->id }}">

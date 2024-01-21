@@ -50,7 +50,7 @@
                                                     <i class="fas fa-edit"></i>
                                                 </a>
 
-                                                <a href="" class="btn btn-danger sm" title="Delete Data">
+                                                <a href="{{ route('delete.portfolio', $item->id ) }}" id="delete" class="btn btn-danger sm" title="Delete Data">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
