@@ -58,18 +58,21 @@ class PortfolioController extends Controller
 
     }//end 
 
-    public function EditPortfolio ($id){
+    public function EditPortfolio ($id)
+    {
         $portfolio = Portfolio::findOrFail($id);
 
         return view('admin.portfolio.portfolio_edit', compact('portfolio'));
 
     }//End
 
-    public function UpdatePortfolio(Request $request){
+    public function UpdatePortfolio(Request $request)
+    {
 
         $portfolio_id = $request->id;
 
-        if ($request->file('portfolio_image')) {
+        if ($request->file('portfolio_image')) 
+        {
             $image = $request->file('portfolio_image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
 
@@ -86,31 +89,34 @@ class PortfolioController extends Controller
             $notification = array(
             'message' => 'Portfolio Updated with Image Successfully', 
             'alert-type' => 'success'
-        );
+            );
 
-        return redirect()->route('all.portfolio')->with($notification);
+            return redirect()->route('all.portfolio')->with($notification);
 
-    } else{
+        } 
+        else
+        {
 
-        Portfolio::findOrFail($portfolio_id)->update([
-            'portfolio_name' => $request->portfolio_name,
-            'portfolio_title' => $request->portfolio_title,
-            'portfolio_description' => $request->portfolio_description,
+            Portfolio::findOrFail($portfolio_id)->update([
+                'portfolio_name' => $request->portfolio_name,
+                'portfolio_title' => $request->portfolio_title,
+                'portfolio_description' => $request->portfolio_description,
 
 
-        ]); 
-        $notification = array(
-        'message' => 'Portfolio Updated without Image Successfully', 
-        'alert-type' => 'success'
-         );
+            ]); 
+            $notification = array(
+            'message' => 'Portfolio Updated without Image Successfully', 
+            'alert-type' => 'success'
+            );
 
-         return redirect()->route('all.portfolio')->with($notification);
+            return redirect()->route('all.portfolio')->with($notification);
 
-    } // end Else
+        } // end Else
 
     }//End
 
-    public function DeletePortfolio ($id){
+    public function DeletePortfolio ($id)
+    {
         $portfolio = Portfolio::findOrFail($id);
         $img = $portfolio->portfolio_image;
        // unlink($img);
@@ -124,6 +130,12 @@ class PortfolioController extends Controller
 
         return redirect()->back()->with($notification);       
 
+    }
+
+    public function DetailsPortfolio($id)
+    {
+        $portfolio = Portfolio::findOrFail($id);
+        return view('frontend.portfolio_details',compact('portfolio'));
     }
 
 }
