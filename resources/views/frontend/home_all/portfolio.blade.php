@@ -14,81 +14,31 @@
     </div>
     <div class="tab-content" id="portfolioTabContent">
      
-        <div class="tab-pane" id="graphic" role="tabpanel" aria-labelledby="graphic-tab">
+        @php
+            $portfolio = App\Models\Portfolio::latest()->get();
+        @endphp
+
+        <div class="tab-pane show active" id="all" role="tabpanel" aria-labelledby="graphic-tab">
             <div class="container">
                 <div class="row gx-0 justify-content-center">
                     <div class="col">
                         <div class="portfolio__active">
+
+                            @foreach($portfolio as $item)
+
                             <div class="portfolio__item">
                                 <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img02.jpg" alt="">
+                                    <img src="{{  asset('frontend/assets/img/portfolio/portfolio_img02.jpg') }}" alt="">
                                 </div>
                                 <div class="portfolio__overlay__content">
-                                    <span>Web Design</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Graphic Design Management System</a></h4>
+                                     <span>{{$item->portfolio_name}}</span>
+                                    <h4 class="title"><a href="portfolio-details.html">{{$item->  portfolio_title}}</a></h4>
                                     <a href="portfolio-details.html" class="link">Case Study</a>
                                 </div>
                             </div>
-                            <div class="portfolio__item">
-                                <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img01.jpg" alt="">
-                                </div>
-                                <div class="portfolio__overlay__content">
-                                    <span>Apps Design</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                    <a href="portfolio-details.html" class="link">Case Study</a>
-                                </div>
-                            </div>
-                            <div class="portfolio__item">
-                                <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img03.jpg" alt="">
-                                </div>
-                                <div class="portfolio__overlay__content">
-                                    <span>UX/UI Design</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                    <a href="portfolio-details.html" class="link">Case Study</a>
-                                </div>
-                            </div>
-                            <div class="portfolio__item">
-                                <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img04.jpg" alt="">
-                                </div>
-                                <div class="portfolio__overlay__content">
-                                    <span>Web Development</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                    <a href="portfolio-details.html" class="link">Case Study</a>
-                                </div>
-                            </div>
-                            <div class="portfolio__item">
-                                <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img05.jpg" alt="">
-                                </div>
-                                <div class="portfolio__overlay__content">
-                                    <span>Web Development</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                    <a href="portfolio-details.html" class="link">Case Study</a>
-                                </div>
-                            </div>
-                            <div class="portfolio__item">
-                                <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img06.jpg" alt="">
-                                </div>
-                                <div class="portfolio__overlay__content">
-                                    <span>Web Development</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                    <a href="portfolio-details.html" class="link">Case Study</a>
-                                </div>
-                            </div>
-                            <div class="portfolio__item">
-                                <div class="portfolio__thumb">
-                                    <img src="assets/img/portfolio/portfolio_img07.jpg" alt="">
-                                </div>
-                                <div class="portfolio__overlay__content">
-                                    <span>Web Development</span>
-                                    <h4 class="title"><a href="portfolio-details.html">Banking Management System</a></h4>
-                                    <a href="portfolio-details.html" class="link">Case Study</a>
-                                </div>
-                            </div>
+                          
+                            @endforeach
+                            
                         </div>
                     </div>
                 </div>
