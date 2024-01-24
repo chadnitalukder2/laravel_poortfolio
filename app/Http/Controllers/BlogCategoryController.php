@@ -14,7 +14,8 @@ class BlogCategoryController extends Controller
         return view('admin.blog_category.blog_category_all',compact('blogCategory'));
     }//End
 
-    public function AddBlogCategory(){
+    public function AddBlogCategory()
+    {
 
         return view('admin.blog_category.blog_category_add');
     } // End Method
@@ -75,4 +76,6 @@ class BlogCategoryController extends Controller
 
         return redirect()->back()->with($notification);   
     }
+
+
 }
