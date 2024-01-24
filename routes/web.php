@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
@@ -59,6 +60,14 @@ Route::controller(PortfolioController::class)->group(function(){
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
 
     Route::get('/portfolio/details/{id}', 'DetailsPortfolio')->name('portfolio.details');
+});
+
+ // Blog Category All Routes 
+ Route::controller(BlogCategoryController::class)->group(function () {
+    Route::get('/all/blog_category', 'AllBlogCategory')->name('all.blog_category');
+    Route::get('/add/blog_category', 'AddBlogCategory')->name('add.blog_category');
+
+
 });
 
 
