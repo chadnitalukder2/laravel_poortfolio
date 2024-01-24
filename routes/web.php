@@ -67,7 +67,7 @@ Route::controller(PortfolioController::class)->group(function(){
     Route::get('/all/blog_category', 'AllBlogCategory')->name('all.blog_category');
     Route::get('/add/blog_category', 'AddBlogCategory')->name('add.blog_category');
 
-
+    Route::post('/store/blog/category', 'StoreBlogCategory')->name('store.blog.category');
 });
 
 
