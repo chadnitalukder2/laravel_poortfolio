@@ -11,15 +11,15 @@
             <div class="col-lg-4 col-md-6 col-sm-9">
                 <div class="blog__post__item">
                     <div class="blog__post__thumb">
-                        <a href="blog-details.html"><img src="{{ asset('frontend/assets/img/blog/blog_post_thumb01.jpg') }}" alt=""></a>
+                        <a href="{{ route('blog.details',$item->id) }}"><img src="{{ asset('frontend/assets/img/blog/blog_post_thumb01.jpg') }}" alt=""></a>
                         <div class="blog__post__tags">
                             <a href="blog.html">{{ $item['category']['blog_category'] }}</a>
                         </div>
                     </div>
                     <div class="blog__post__content">
-                        <span class="date">13 january 2021</span>
-                        <h3 class="title"><a href="blog-details.html">{{ $item->blog_title }}</a></h3>
-                        <a href="blog-details.html" class="read__more">Read mORe</a>
+                        <span class="date">{{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</span>
+                        <h3 class="title"><a href="{{ route('blog.details',$item->id) }}">{{ $item->blog_title }}</a></h3>
+                        <a href="{{ route('blog.details',$item->id) }}" class="read__more">Read mORe</a>
                     </div>
                 </div>
             </div>

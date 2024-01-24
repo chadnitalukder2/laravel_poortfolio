@@ -56,7 +56,8 @@ class BlogController extends Controller
         return view('admin.blogs.blogs_edit',compact('blogs','categories'));
     }//End
 
-    public function UpdateBlog(Request $request){
+    public function UpdateBlog(Request $request)
+    {
 
         $blog_id = $request->id;
 
@@ -101,9 +102,10 @@ class BlogController extends Controller
 
        } // end Else
 
-   } // End Method
+    } // End Method
 
-   public function DeleteBlog($id){
+   public function DeleteBlog($id)
+   {
     Blog::findOrFail($id)->delete();
 
     $notification = array(
@@ -112,6 +114,37 @@ class BlogController extends Controller
     );
 
     return redirect()->back()->with($notification);
-   }
+   }//End
+
+
+   
+   public function BlogDetails($id)
+    {
+        $allblogs = Blog::latest()->limit(5)->get();
+        $blogs = Blog::findOrFail($id);
+        $categories = BlogCategory::orderBy('blog_category','ASC')->get();
+        return view('frontend.blog_details',compact('blogs','allblogs','categories'));
+
+    } // End Method 
+
+    public function CategoryBlog($id)
+    {
+        $blogpost = Blog::where('blog_category_id',$id)->orderBy('id','DESC')->get();
+        $allblogs = Blog::latest()->limit(5)->get();
+        $categories = BlogCategory::orderBy('blog_category','ASC')->get();
+        $categoryname = BlogCategory::findOrFail($id);
+        return view('frontend.cat_blog_details',compact('blogpost','allblogs','categories','categoryname'));
+
+    } // End Method 
+
+
+    public function HomeBlog()
+    {
+
+        $categories = BlogCategory::orderBy('blog_category','ASC')->get();
+        $allblogs = Blog::latest()->get();
+        return view('frontend.blog',compact('allblogs','categories'));
+
+     } // End Method 
 
 }
