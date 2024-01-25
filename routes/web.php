@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\FooterController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
@@ -11,8 +12,12 @@ use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('frontend.index');
+// Route::get('/', function () {
+//     return view('frontend.index');
+// });
+
+Route::controller(DemoController::class)->group(function (){
+    Route::get('/', 'HomeMain')->name('home');
 });
 
 Route::get('/dashboard', function () {
