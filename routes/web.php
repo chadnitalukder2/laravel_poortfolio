@@ -63,6 +63,8 @@ Route::controller(PortfolioController::class)->group(function(){
     Route::get('/delete/portfolio/{id}', 'DeletePortfolio')->name('delete.portfolio');
 
     Route::get('/portfolio/details/{id}', 'DetailsPortfolio')->name('portfolio.details');
+
+    Route::get('/home/portfolio', 'HomePortfolio')->name('home.portfolio');
 });
 
  // Blog Category All Routes 
