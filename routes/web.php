@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogCategoryController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FooterController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
@@ -93,6 +94,13 @@ Route::controller(BlogController::class)->group(function () {
     Route::get('/blog', 'HomeBlog')->name('home.blog');
 });
 
+//Footer page rout
+Route::controller(FooterController::class)->group(function () {
+    Route::get('/footer/setup', 'FooterSetup')->name('footer.setup');
+
+    Route::post('/update/footer', 'UpdateFooter')->name('update.footer');
+
+});
 
 
 require __DIR__.'/auth.php';
