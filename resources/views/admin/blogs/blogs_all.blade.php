@@ -38,10 +38,10 @@
 
 
                             <tbody>
-                                @php($i = 1)
-                                @foreach($blogs as $item)
+                              
+                                @foreach($blogs as $key => $item)
                                 <tr>
-                                    <td> {{ $i++}} </td>
+                                    <td> {{ $key+1}} </td>
                                     <td> {{ $item['category']['blog_category'] }} </td>
                                     <td> {{ $item->blog_title }} </td>
                                     <td> {{ $item->blog_tags }} </td>
