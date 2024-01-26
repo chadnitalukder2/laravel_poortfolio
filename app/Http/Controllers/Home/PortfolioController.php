@@ -52,7 +52,8 @@ class PortfolioController extends Controller
             $notification = array(
             'message' => 'Portfolio Inserted Successfully', 
             'alert-type' => 'success'
-        );
+            );
+
 
         return redirect()->route('all.portfolio')->with($notification);
 

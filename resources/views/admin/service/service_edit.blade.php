@@ -18,17 +18,15 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="card-title">Service Page </h4><br><br>
+            <h4 class="card-title">Service Edit Page </h4><br><br>
 
-            <form method="post" action="{{ route('store.service') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('update.service') }}" enctype="multipart/form-data">
                 @csrf
-
-              
 
                 <div class="row mb-3">
                     <label for="example-text-input" class="col-sm-2 col-form-label">Service Title </label>
                     <div class="col-sm-10">
-                        <input name="service_title" class="form-control" type="text" id="example-text-input">
+                        <input name="service_title" value="{{ $service->service_title }}" class="form-control" type="text" id="example-text-input">
 
                         @error('service_title')
                         <span class="text-danger"> {{ $message }} </span>
@@ -41,7 +39,7 @@
                     <label for="example-text-input" class="col-sm-2 col-form-label">Service Description </label>
                     <div class="col-sm-10">
                         <textarea id="elm1" name="service_description" class="form-control">
-
+                            {{ $service->service_description }}
                         </textarea>
                     </div>
                 </div>
@@ -50,11 +48,10 @@
                 <div class="row mb-3">
                     <label for="example-text-input" class="col-sm-2 col-form-label">Service Image </label>
                     <div class="col-sm-10">
-                        <input name="service_image" class="form-control" type="file" id="image">
+                        <input name="service_image" value="{{ $service->service_image }}" class="form-control" type="file" id="image">
                     </div>
                 </div>
                 <!-- end row -->
-
 
                 <div class="row mb-3">
                     <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
@@ -64,7 +61,7 @@
                 </div>
                 <!-- end row -->
 
-                <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert Blog Data">
+                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update  Data">
             </form>
 
 

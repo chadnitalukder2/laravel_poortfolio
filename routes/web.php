@@ -128,7 +128,11 @@ Route::controller(ServiceController::class)->group(function () {
     Route::get('/all/service', 'AllService')->name('all.service');
     Route::get('/add/service', 'AddService')->name('add.service');
 
-      
+    Route::post('/store/service', 'StoreService')->name('store.service');
+
+    Route::get('/edit/service/{id}', 'EditService')->name('edit.service');
+    Route::post('/update.service', 'UpdateService')->name('update.service');
+    Route::get('/delete/service/{id}', 'DeleteService')->name('delete.service');
 
 });
 
