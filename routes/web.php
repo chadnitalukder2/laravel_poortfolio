@@ -10,6 +10,7 @@ use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\HomeSliderController;
 use App\Http\Controllers\Home\PortfolioController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -27,15 +28,15 @@ Route::get('/dashboard', function () {
 //admin all route
 Route::middleware(['auth'])->group(function () {
 
-Route::controller(AdminController::class)->group(function(){
-    Route::get('/admin/logout', 'destroy')->name('admin.logout');
-    Route::get('/admin/profile', 'Profile')->name('admin.profile');
-    Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
-    Route::post('/store/profile', 'StoreProfile')->name('store.profile');
-    
-    Route::get('/change/password', 'ChangePassword')->name('change.password');
-    Route::post('/update/password', 'UpdatePassword')->name('update.password');
-});
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/admin/logout', 'destroy')->name('admin.logout');
+        Route::get('/admin/profile', 'Profile')->name('admin.profile');
+        Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
+        Route::post('/store/profile', 'StoreProfile')->name('store.profile');
+        
+        Route::get('/change/password', 'ChangePassword')->name('change.password');
+        Route::post('/update/password', 'UpdatePassword')->name('update.password');
+    });
 });
 
 Route::controller(HomeSliderController::class)->group(function(){
@@ -120,6 +121,14 @@ Route::controller(FooterController::class)->group(function () {
     Route::post('/store/message', 'StoreMessage')->name('store.message');
     Route::get('/contact/message', 'ContactMessage')->name('contact.message');   
     Route::get('/delete/message/{id}', 'DeleteMessage')->name('delete.message');   
+
+});
+
+Route::controller(ServiceController::class)->group(function () {
+    Route::get('/all/service', 'AllService')->name('all.service');
+    Route::get('/add/service', 'AddService')->name('add.service');
+
+      
 
 });
 
