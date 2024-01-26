@@ -12,7 +12,7 @@
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-lg-8 col-md-10">
                             <div class="breadcrumb__wrap__content">
-               <h2 class="title"> All Blogs </h2>
+                                 <h2 class="title"> All Blogs </h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -43,26 +43,26 @@
                     <div class="row">
                         <div class="col-lg-8">
 
-                        @foreach($allblogs as $item)
-<div class="standard__blog__post">
-    <div class="standard__blog__thumb">
-        <a href="blog-details.html"><img src="{{ asset($item->blog_image) }}" alt=""></a>
-        <a href="blog-details.html" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
-    </div>
-    <div class="standard__blog__content">
-        <div class="blog__post__avatar">
-            <div class="thumb"><img src="{{ asset($item->blog_image) }}" alt=""></div>
-            <span class="post__by">By : <a href="#">Halina Spond</a></span>
-        </div>
-        <h2 class="title"><a href="{{ route('blog.details',$item->id) }}">{{$item->blog_title}}</a></h2>
-        <p>{!! Str::limit($item->blog_description, 200) !!}  </p>
-        <ul class="blog__post__meta">
-            <li><i class="fal fa-calendar-alt"></i> {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</li>
+                             @foreach($allblogs as $item)
+                                <div class="standard__blog__post">
+                                    <div class="standard__blog__thumb">
+                                        <a href="blog-details.html"><img src="{{ asset($item->blog_image) }}" alt=""></a>
+                                        <a href="blog-details.html" class="blog__link"><i class="far fa-long-arrow-right"></i></a>
+                                    </div>
+                                    <div class="standard__blog__content">
+                                        <div class="blog__post__avatar">
+                                            <div class="thumb"><img src="{{ asset($item->blog_image) }}" alt=""></div>
+                                            <span class="post__by">By : <a href="#">Halina Spond</a></span>
+                                        </div>
+                                        <h2 class="title"><a href="{{ route('blog.details',$item->id) }}">{{$item->blog_title}}</a></h2>
+                                        <p>{!! Str::limit($item->blog_description, 200) !!}  </p>
+                                        <ul class="blog__post__meta">
+                                            <li><i class="fal fa-calendar-alt"></i> {{ Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</li>
 
 
-        </ul>
-    </div>
-</div>
+                                        </ul>
+                                    </div>
+                                </div>
                             @endforeach
 
 
@@ -86,73 +86,35 @@
                                 </div>
 
 
-        <div class="widget">
-            <h4 class="widget-title">Recent Blog</h4>
-            <ul class="rc__post">
+                                <div class="widget">
+                                    <h4 class="widget-title">Recent Blog</h4>
+                                    <ul class="rc__post">
 
-               @foreach($allblogs as $all )
-                <li class="rc__post__item">
-                    <div class="rc__post__thumb">
-                        <a href="blog-details.html"><img src="{{ asset($all->blog_image) }} " alt=""></a>
-                    </div>
-                    <div class="rc__post__content">
-                        <h5 class="title"><a href="blog-details.html">{{ $all->blog_title }}
-                         </a></h5>
-                        <span class="post-date"><i class="fal fa-calendar-alt"></i> {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }} </span>
-                    </div>
-                </li>
-                @endforeach
+                                    @foreach($allblogs as $all )
+                                        <li class="rc__post__item">
+                                            <div class="rc__post__thumb">
+                                                <a href="blog-details.html"><img src="{{ asset($all->blog_image) }} " alt=""></a>
+                                            </div>
+                                            <div class="rc__post__content">
+                                                <h5 class="title"><a href="blog-details.html">{{ $all->blog_title }}
+                                                </a></h5>
+                                                <span class="post-date"><i class="fal fa-calendar-alt"></i> {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }} </span>
+                                            </div>
+                                        </li>
+                                        @endforeach
 
                                     </ul>
                                 </div>
-
-                               <div class="widget">
-            <h4 class="widget-title">Categories</h4>
-            <ul class="sidebar__cat">
-            	@foreach($categories as $cat)
-                <li class="sidebar__cat__item"><a href="{{ route('category.blog',$cat->id) }}">{{ $cat->blog_category  }}  </a></li>
-                @endforeach
-            </ul>
-        </div>
-
 
                                 <div class="widget">
-                                    <h4 class="widget-title">Recent Comment</h4>
-                                    <ul class="sidebar__comment">
-                                        <li class="sidebar__comment__item">
-                                            <a href="blog-details.html">Rasalina Sponde</a>
-                                            <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                        </li>
-                                        <li class="sidebar__comment__item">
-                                            <a href="blog-details.html">Rasalina Sponde</a>
-                                            <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                        </li>
-                                        <li class="sidebar__comment__item">
-                                            <a href="blog-details.html">Rasalina Sponde</a>
-                                            <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                        </li>
-                                        <li class="sidebar__comment__item">
-                                            <a href="blog-details.html">Rasalina Sponde</a>
-                                            <p>There are many variations of passages of lorem ipsum available, but the majority have</p>
-                                        </li>
+                                    <h4 class="widget-title">Categories</h4>
+                                    <ul class="sidebar__cat">
+                                        @foreach($categories as $cat)
+                                        <li class="sidebar__cat__item"><a href="{{ route('category.blog',$cat->id) }}">{{ $cat->blog_category  }}  </a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
-                                <div class="widget">
-                                    <h4 class="widget-title">Popular Tags</h4>
-                                    <ul class="sidebar__tags">
-                                        <li><a href="blog.html">Business</a></li>
-                                        <li><a href="blog.html">Design</a></li>
-                                        <li><a href="blog.html">apps</a></li>
-                                        <li><a href="blog.html">landing page</a></li>
-                                        <li><a href="blog.html">data</a></li>
-                                        <li><a href="blog.html">website</a></li>
-                                        <li><a href="blog.html">book</a></li>
-                                        <li><a href="blog.html">Design</a></li>
-                                        <li><a href="blog.html">product design</a></li>
-                                        <li><a href="blog.html">landing page</a></li>
-                                        <li><a href="blog.html">data</a></li>
-                                    </ul>
-                                </div>
+
                             </aside>
                         </div>
                     </div>

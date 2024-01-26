@@ -13,6 +13,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+ });
+
+ Route::get('/dashboard', function () {
+    return view('admin.index');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
 // Route::get('/', function () {
 //     return view('frontend.index');
 // });
@@ -21,9 +32,6 @@ Route::controller(DemoController::class)->group(function (){
     Route::get('/home', 'HomeMain')->name('home');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 //admin all route
 Route::middleware(['auth'])->group(function () {
@@ -52,12 +60,6 @@ Route::controller(AboutController::class)->group(function(){
    
     Route::get('/about/multiImage', 'AboutMultiImage')->name('about.multiImage');
 });
-
-// Route::middleware('auth')->group(function () {
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 
 //portfolio all route
