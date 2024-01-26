@@ -23,6 +23,8 @@
             <form method="post" action="{{ route('update.service') }}" enctype="multipart/form-data">
                 @csrf
 
+                <input type="hidden" name="id" value="{{ $service->id }}">
+
                 <div class="row mb-3">
                     <label for="example-text-input" class="col-sm-2 col-form-label">Service Title </label>
                     <div class="col-sm-10">
