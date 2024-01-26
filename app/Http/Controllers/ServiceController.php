@@ -117,4 +117,11 @@ class ServiceController extends Controller
         return redirect()->back()->with($notification);  
     }
 
+
+    public function HomeService()
+    {
+        $service = Service::latest()->get();
+        return view('frontend.service',compact('service'));
+    }
+
 }

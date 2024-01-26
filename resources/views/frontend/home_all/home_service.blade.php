@@ -31,9 +31,9 @@
                             <img class="dark" src="{{ asset('frontend/assets/img/icons/services_icon01.png') }}" alt="">
                         </div>
                         <h3 class="title"><a href="services-details.html">{{ $item->service_title }}</a></h3>
-                        <p>{!! $item->service_description !!}</p>
+                        <p>{!! Str::limit($item->service_description, 200) !!}</p>
                      
-                        <a href="services-details.html" class="btn border-btn">Read more</a>
+                        <a href="{{route('home.service') }}" class="btn border-btn">Read more</a>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::controller(DemoController::class)->group(function (){
-    Route::get('/', 'HomeMain')->name('home');
+    Route::get('/home', 'HomeMain')->name('home');
 });
 
 Route::get('/dashboard', function () {
@@ -73,7 +73,7 @@ Route::controller(PortfolioController::class)->group(function(){
 
     Route::get('/portfolio/details/{id}', 'DetailsPortfolio')->name('portfolio.details');
 
-    Route::get('/home/portfolio', 'HomePortfolio')->name('home.portfolio');
+    Route::get('/portfolio', 'HomePortfolio')->name('home.portfolio');
 });
 
  // Blog Category All Routes 
@@ -133,6 +133,8 @@ Route::controller(ServiceController::class)->group(function () {
     Route::get('/edit/service/{id}', 'EditService')->name('edit.service');
     Route::post('/update.service', 'UpdateService')->name('update.service');
     Route::get('/delete/service/{id}', 'DeleteService')->name('delete.service');
+
+    Route::get('/service', 'HomeService')->name('home.service');
 
 });
 
