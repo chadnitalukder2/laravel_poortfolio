@@ -10,49 +10,63 @@ use Illuminate\Http\Request;
 class HomeSliderController extends Controller
 {
     public function HomeSlider (){
-        $homeslide = HomeSlide::find(1) ;
+        $homeslide = $this->getHomeSlide();
         return view('admin.home_slide.home_slide_all', compact('homeslide'));
     }
 
+    public function getHomeSlide() {
+        $homeslide = HomeSlide::first();
+        //  dd($homeslide);
+        if(!$homeslide){
+            $homeslide = array( 
+                'id'=> 1,
+                'title' => 'Home Slider',
+                'short_title' => 'Home Slider',
+                'video_url' => 'www.youtube.com',
+                'home_slide' => 'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png',
+            ); 
+            $homeslide = (object) $homeslide;
+        }
+
+        return $homeslide;
+    }
+
     public function UpdateSlider(Request $request){
-        $slide_id = $request->id;
+        try {
+            $slide_id = $request->id;
+            if($request->file('home_slide')){
+                $imageName = $request->home_slide->getClientOriginalName();  
+                $save_url = 'upload/home_slide/'.$imageName;
 
-        if($request->file('home_slide')){
-            $image = $request->file('home_slide');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension(); //98778.jpg
-            
-           // \Intervention\Image\Facades\Image::make($image)->resize(636,852)->save('upload/home_slide/'.$name_gen);
-           $upload_image = "upload/".$name_gen;
-           
-            $save_url = 'upload/home_slide/'.$upload_image;
-
-           HomeSlide::findOrFail($slide_id)->update([
+                if(file_exists($save_url)){
+                unlink($save_url);
+                }
+                $request->home_slide->move(public_path('upload/home_slide'), $imageName);
+            }
+            else{
+                $save_url = '';
+            }
+            HomeSlide::updateOrCreate([
+                'id' => $slide_id
+            ],[
                 'title' => $request->title,
                 'short_title' => $request->short_title,
                 'video_url' => $request->video_url,
                 'home_slide' => $save_url,
-            ]); 
+            ]);
             $notification = array( 
                 'message' => 'Home Slide Updated With Image Successfully',
                 'alert-type' => 'success'
-            ); 
-            return redirect()->back()->with($notification);
-        }
-        else{
-            HomeSlide::findOrFail($slide_id)->update([
-                'title' => $request->title,
-                'short_title' => $request->short_title,
-                'video_url' => $request->video_url
-            ]); 
+            );
+        } catch (\Throwable $th) {
             $notification = array( 
-                'message' => 'Home Slide Updated Without  Image Successfully',
+                'message' => 'Something Went Wrong',
                 'alert-type' => 'success'
-            ); 
-            return redirect()->back()->with($notification);
-        }//end else
-   
-           
-            
+            );
+        }
+
+        return redirect()->back()->with($notification);
+      
    
     }//end method
 
