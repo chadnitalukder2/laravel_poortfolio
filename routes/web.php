@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 // });
 
 Route::controller(DemoController::class)->group(function (){
-    Route::get('/home', 'HomeMain')->name('home');
+    Route::get('/', 'HomeMain')->name('home');
 });
 
 
@@ -47,11 +47,13 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
+//Home all Route
 Route::controller(HomeSliderController::class)->group(function(){
     Route::get('/home/slide', 'HomeSlider')->name('home.slide');
     Route::post('/update/slider', 'UpdateSlider')->name('update.slider');
 });
 
+//About all Route
 Route::controller(AboutController::class)->group(function(){
     Route::get('/about/slide', 'AboutSlider')->name('about.slide');
     Route::post('/update/AboutSlider', 'UpdateAboutSlider')->name('update.AboutSlider');
@@ -126,6 +128,7 @@ Route::controller(FooterController::class)->group(function () {
 
 });
 
+//Service all Route
 Route::controller(ServiceController::class)->group(function () {
     Route::get('/all/service', 'AllService')->name('all.service');
     Route::get('/add/service', 'AddService')->name('add.service');
