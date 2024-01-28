@@ -20,8 +20,8 @@ class HomeSliderController extends Controller
         if(!$homeslide){
             $homeslide = array( 
                 'id'=> 1,
-                'title' => 'Home Slider',
-                'short_title' => 'Home Slider',
+                'title' => 'Home Slider Title',
+                'short_title' => 'Home Slider Short Title',
                 'video_url' => 'www.youtube.com',
                 'home_slide' => 'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png',
             ); 

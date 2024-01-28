@@ -42,7 +42,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about__image">
-                        <img src="{{ asset('frontend/assets/img/images/about_img.png') }} " alt="">
+                        <img src="{{ url($aboutSlide->about_image) }} " alt="">
                     </div>
                 </div>
                 <div class="col-lg-6">
