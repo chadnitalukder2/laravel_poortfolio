@@ -29,6 +29,7 @@
         <link href=" {{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" >
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+        
     </head>
 
     <body data-topbar="dark">
@@ -116,6 +117,15 @@
         </script>
 
         <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js" ></script>
+ 
+        {{-- from editro --}}
+         <!--tinymce js-->
+         <script src="{{ asset('backend/assets/libs/tinymce/tinymce.min.js') }}"></script>
+
+         <!-- init js -->
+         <script src="{{ asset('backend/assets/js/pages/form-editor.init.js') }}"></script>
+        
+        
     </body>
 
 </html>

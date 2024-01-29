@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title"> About Slide Page  </h4>
+                        <h4 class="card-title"> About Slide Page  </h4><br><br>
                         
                         <form method="POST" action="{{ route('update.AboutSlider') }}" enctype="multipart/form-data">
                          @csrf
@@ -41,10 +41,34 @@
                             </div>
                              <!-- end row -->
 
-                             <div class="row mb-3">
+                            <div class="row mb-3">
                                 <label for="example-text-input" class="col-sm-2 col-form-label">Long Description</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" type="text" name="long_description" >{{ $aboutSlide->long_description }}</textarea> 
+                                    <textarea class="form-control" id="elm1" name="long_description" >{{ $aboutSlide->long_description }}</textarea> 
+                                </div>
+                            </div>
+                             <!-- end row long description -->
+
+                             <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Skill Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="5" id="elm1" name="skills_description" >{{ $aboutSlide->skills_description }}</textarea> 
+                                </div>
+                            </div>
+                             <!-- end row -->
+
+                             <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Awards Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="5" id="elm2" name="awards_description" >{{ $aboutSlide->awards_description }}</textarea> 
+                                </div>
+                            </div>
+                             <!-- end row -->
+
+                             <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Educations Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="5" id="elm1" name="educations_description" >{{ $aboutSlide->educations_description }}</textarea> 
                                 </div>
                             </div>
                              <!-- end row -->

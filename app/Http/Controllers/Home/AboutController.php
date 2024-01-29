@@ -24,6 +24,9 @@ class AboutController extends Controller
                 'short_title' => 'About Short Title',
                 'short_description' => 'About Short Description ',
                 'long_description' => 'About Long Description',
+                'skills_description' => 'About Skills Description',
+                'awards_description' => 'About Awards Description',
+                'educations_description' => 'About Education Description',
                 'about_image' => 'https://png.pngtree.com/png-vector/20220709/ourmid/pngtree-businessman-user-avatar-wearing-suit-with-red-tie-png-image_5809521.png',
             );
             $aboutSlide = (object) $aboutSlide;
@@ -56,6 +59,9 @@ class AboutController extends Controller
                 'short_title' => $request->short_title,
                 'short_description' => $request->short_description,
                 'long_description' => $request->long_description,
+                'skills_description' => $request->skills_description,
+                'awards_description' => $request->awards_description,
+                'educations_description' => $request->educations_description,
                 'about_image' => $save_url,
 
             ]);
