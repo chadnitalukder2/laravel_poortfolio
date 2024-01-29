@@ -51,7 +51,7 @@ class ServiceController extends Controller
                 );
     
             return redirect()->route('all.service')->with($notification);
-            
+
         }catch (\Throwable $th) {
             $notification = array( 
                 'message' => 'Something Went Wrong',
@@ -66,68 +66,82 @@ class ServiceController extends Controller
     public function EditService($id) 
     {
         $service = Service::findOrFail($id);
-
         return view('admin.service.service_edit', compact('service'));
-
     }
 
 // --------------------------------------------------------------------
     public function UpdateService(Request $request){
         //dd($request->toArray());
-        $service_id = $request->id;
+        try{
+            $service_id = $request->id;
 
-        if ($request->file('service_image')) 
-        {
-            $imageName = $request->service_image->getClientOriginalName();  
-            $save_url = 'upload/Service/'.$imageName;
-            $request->service_image->move(public_path('upload/Service'), $imageName);
-
-            Service::findOrFail($service_id)->update([
-                'service_title' => $request->service_title,
-                'service_description' => $request->service_description,
-                'service_image' => $save_url,
-
-            ]); 
-            $notification = array(
-            'message' => 'Service Updated with Image Successfully', 
-            'alert-type' => 'success'
+            if ($request->file('service_image')) 
+            {
+                $imageName = $request->service_image->getClientOriginalName();  
+                $save_url = 'upload/Service/'.$imageName;
+                $request->service_image->move(public_path('upload/Service'), $imageName);
+    
+                Service::findOrFail($service_id)->update([
+                    'service_title' => $request->service_title,
+                    'service_description' => $request->service_description,
+                    'service_image' => $save_url,
+    
+                ]); 
+                $notification = array(
+                'message' => 'Service Updated with Image Successfully', 
+                'alert-type' => 'success'
+                );
+    
+                return redirect()->route('all.service')->with($notification);
+    
+            } 
+            else
+            {
+    
+                Service::findOrFail($service_id)->update([
+                    'service_title' => $request->service_title,
+                    'service_description' => $request->service_description,
+                ]); 
+    
+                $notification = array(
+                'message' => 'Service Updated without Image Successfully', 
+                'alert-type' => 'success'
+                );
+    
+                return redirect()->route('all.service')->with($notification);
+    
+            } // end Else
+        }catch (\Throwable $th) {
+            $notification = array( 
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'success'
             );
-
-            return redirect()->route('all.service')->with($notification);
-
-        } 
-        else
-        {
-
-            Service::findOrFail($service_id)->update([
-                'service_title' => $request->service_title,
-                'service_description' => $request->service_description,
-            ]); 
-
-            $notification = array(
-            'message' => 'Service Updated without Image Successfully', 
-            'alert-type' => 'success'
-            );
-
-            return redirect()->route('all.service')->with($notification);
-
-        } // end Else
+        }
+      
     }
 
 // --------------------------------------------------------------------
     public function DeleteService($id){
-        $service = Service::findOrFail($id);
-        $img = $service->service_image;
-        unlink($img);
+        try{
+            $service = Service::findOrFail($id);
+            $img = $service->service_image;
+            unlink($img);
+    
+           Service::findOrFail($id)->delete();
+    
+             $notification = array(
+                'message' => 'Portfolio Image Deleted Successfully', 
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->back()->with($notification);  
+        }catch (\Throwable $th) {
+            $notification = array( 
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'success'
+            );
+        }
 
-       Service::findOrFail($id)->delete();
-
-         $notification = array(
-            'message' => 'Portfolio Image Deleted Successfully', 
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);  
     }
 
 // --------------------------------------------------------------------
