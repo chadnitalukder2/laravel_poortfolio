@@ -48,7 +48,7 @@
                     </div>
                     <div class="services__details__content">
                         <h2 class="title">{{ $item->service_title }}</h2>
-                        <p>{!! Str::limit($item->service_description, 200) !!}</p><br><br>
+                        <p>{!! $item->service_description !!}</p><br><br>
                     </div>
                 </div>
 

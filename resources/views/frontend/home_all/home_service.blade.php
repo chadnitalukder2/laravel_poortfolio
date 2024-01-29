@@ -23,7 +23,7 @@
             <div class="col-xl-3">
                 <div class="services__item">
                     <div class="services__thumb">
-                        <a href="services-details.html"><img src="{{   url(  $item->service_image) }}"style="width: 550px; height: 400px;" alt=""></a>
+                        <a href="services-details.html"><img src="{{   url(  $item->service_image) }}"style="width: 320px; height: 240px;" alt=""></a>
                     </div>
                     <div class="services__content">
                         <div class="services__icon">
@@ -31,7 +31,7 @@
                             <img class="dark" src="{{ asset('frontend/assets/img/icons/services_icon01.png') }}" alt="">
                         </div>
                         <h3 class="title"><a href="services-details.html">{{ $item->service_title }}</a></h3>
-                        <p>{!! Str::limit($item->service_description, 200) !!}</p>
+                        <p>{!! Str::limit($item->service_description, 250) !!}</p>
                      
                         <a href="{{route('home.service') }}" class="btn border-btn">Read more</a>
                     </div>

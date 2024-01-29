@@ -64,7 +64,7 @@
                 </div>
                 <!-- end row -->
 
-                <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert Blog Data">
+                <input type="submit" class="btn btn-info waves-effect waves-light" value="Insert  Data">
             </form>
 
 

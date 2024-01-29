@@ -10,47 +10,59 @@ class ServiceController extends Controller
 {
     public function AllService(){
         $service = Service::latest()->get();
-        
         return view('admin.service.all_service',compact('service'));
     }//End
+    
 
+// --------------------------------------------------------------------
     public function AddService(){
         return view('admin.service.add_service');
     }//End
 
+// --------------------------------------------------------------------
     public function StoreService(Request $request)
     {
-        $request->validate([
-            'service_title' => 'required',
-            'service_description' => 'required',
-            'service_image' => 'required',
-        ],[
-            'service_title.required' => 'Service Title is Required',
-            'service_description.required' => 'Service Description Title is Required',
-        ]);
-
-        $imageName = $request->service_image->getClientOriginalName();  
-        $save_url = 'upload/Service/'.$imageName;
-        $request->service_image->move(public_path('upload/Service'), $imageName);
-
-        Service::insert([
-            'service_title' => $request->service_title,
-            'service_description' => $request->service_description,
-            'service_image' =>  $save_url,
-            'created_at' => Carbon::now(),
-        ]);
-        dd( 'service_image');
-        
-
-        $notification = array(
-            'message' => 'Service Inserted Successfully', 
-            'alert-type' => 'success'
+        try {
+            $request->validate([
+                'service_title' => 'required',
+                'service_description' => 'required',
+                'service_image' => 'required',
+            ],[
+                'service_title.required' => 'Service Title is Required',
+                'service_description.required' => 'Service Description Title is Required',
+            ]);
+    
+            $imageName = $request->service_image->getClientOriginalName();  
+            $save_url = 'upload/Service/'.$imageName;
+            $request->service_image->move(public_path('upload/Service'), $imageName);
+    
+            Service::insert([
+                'service_title' => $request->service_title,
+                'service_description' => $request->service_description,
+                'service_image' =>  $save_url,
+                'created_at' => Carbon::now(),
+            ]);
+      
+            
+    
+            $notification = array(
+                'message' => 'Service Inserted Successfully', 
+                'alert-type' => 'success'
+                );
+    
+            return redirect()->route('all.service')->with($notification);
+            
+        }catch (\Throwable $th) {
+            $notification = array( 
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'success'
             );
-
-        return redirect()->route('all.service')->with($notification);
+        }
+       
 
     }//End
 
+// --------------------------------------------------------------------
     public function EditService($id) 
     {
         $service = Service::findOrFail($id);
@@ -59,6 +71,7 @@ class ServiceController extends Controller
 
     }
 
+// --------------------------------------------------------------------
     public function UpdateService(Request $request){
         //dd($request->toArray());
         $service_id = $request->id;
@@ -101,6 +114,7 @@ class ServiceController extends Controller
         } // end Else
     }
 
+// --------------------------------------------------------------------
     public function DeleteService($id){
         $service = Service::findOrFail($id);
         $img = $service->service_image;
@@ -116,7 +130,7 @@ class ServiceController extends Controller
         return redirect()->back()->with($notification);  
     }
 
-
+// --------------------------------------------------------------------
     public function HomeService()
     {
         $service = Service::latest()->get();

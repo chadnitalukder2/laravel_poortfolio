@@ -43,6 +43,7 @@ class HomeSliderController extends Controller
                 }
                 $request->home_slide->move(public_path('upload/home_slide'), $imageName);
             }
+            
             else{
                 $save_url = '';
             }

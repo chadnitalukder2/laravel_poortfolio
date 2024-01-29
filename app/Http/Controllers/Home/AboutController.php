@@ -12,6 +12,7 @@ class AboutController extends Controller
     {
         $aboutSlide = $this->getAboutSlide();
         return view('admin.about_page.about_page_all', compact('aboutSlide'));
+        
     }//End
 
     public function getAboutSlide() {
