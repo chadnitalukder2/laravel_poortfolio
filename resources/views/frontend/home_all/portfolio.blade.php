@@ -28,7 +28,7 @@
 
                             <div class="portfolio__item">
                                 <div class="portfolio__thumb">
-                                    <img src="{{  asset('frontend/assets/img/portfolio/portfolio_img02.jpg') }}" alt="">
+                                    <img src="{{  url($item->portfolio_image) }}" style="width: 1020px; height: 519px;" alt="">
                                 </div>
                                 <div class="portfolio__overlay__content">
                                      <span>{{$item->portfolio_name}}</span>

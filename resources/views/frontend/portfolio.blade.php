@@ -49,8 +49,8 @@
                             <div class="row gx-0 align-items-center">
                                 <div class="col-lg-6 col-md-10">
                                     <div class="portfolio__inner__thumb">
-                                        <a href="portfolio-details.html">
-                                            <img src="{{ asset('frontend/assets/img/portfolio/portfolio__img01.jpg') }}" alt="">
+                                        <a href="{{ route('portfolio.details', $item->id) }}">
+                                            <img src="{{  url($item->portfolio_image) }}" style="width: 648px; height: 616px;" alt="">
                                         </a>
                                     </div>
                                 </div>

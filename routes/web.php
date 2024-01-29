@@ -63,7 +63,6 @@ Route::controller(AboutController::class)->group(function(){
     Route::get('/about/multiImage', 'AboutMultiImage')->name('about.multiImage');
 });
 
-
 //portfolio all route
 Route::controller(PortfolioController::class)->group(function(){
     Route::get('/all/portfolio', 'AllPortfolio')->name('all.portfolio');

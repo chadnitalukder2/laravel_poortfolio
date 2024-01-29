@@ -19,7 +19,6 @@ class PortfolioController extends Controller
 
     public function AddPortfolio()
     {
-
         return view('admin.portfolio.portfolio_add');
     }
 
@@ -35,11 +34,9 @@ class PortfolioController extends Controller
            
         ]);
         
-        $image = $request->file('portfolio_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
-
-            //Image::make($image)->resize(1020,519)->save('upload/portfolio/'.$name_gen);
-            $save_url = 'upload/portfolio/'.$name_gen;
+        $imageName = $request->portfolio_image->getClientOriginalName();  
+        $save_url = 'upload/portfolio/'.$imageName;
+        $request->portfolio_image->move(public_path('upload/portfolio'), $imageName);
 
             Portfolio::insert([
                 'portfolio_name' => $request->portfolio_name,
@@ -74,11 +71,9 @@ class PortfolioController extends Controller
 
         if ($request->file('portfolio_image')) 
         {
-            $image = $request->file('portfolio_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
-
-            //Image::make($image)->resize(1020,519)->save('upload/portfolio/'.$name_gen);
-            $save_url = 'upload/portfolio/'.$name_gen;
+            $imageName = $request->portfolio_image->getClientOriginalName();  
+            $save_url = 'upload/portfolio/'.$imageName;
+            $request->portfolio_image->move(public_path('upload/portfolio'), $imageName);
 
             Portfolio::findOrFail($portfolio_id)->update([
                 'portfolio_name' => $request->portfolio_name,
