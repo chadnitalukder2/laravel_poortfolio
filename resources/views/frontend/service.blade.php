@@ -44,7 +44,7 @@
 
                 <div class="col-lg-8">
                     <div class="services__details__thumb">
-                        <img src="{{ asset('frontend/assets/img/images/services_details01.jpg') }}" alt="">
+                        <img src="{{   url(  $item->service_image) }}"   alt="">
                     </div>
                     <div class="services__details__content">
                         <h2 class="title">{{ $item->service_title }}</h2>

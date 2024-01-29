@@ -10,6 +10,7 @@ class ServiceController extends Controller
 {
     public function AllService(){
         $service = Service::latest()->get();
+        
         return view('admin.service.all_service',compact('service'));
     }//End
 
@@ -28,11 +29,9 @@ class ServiceController extends Controller
             'service_description.required' => 'Service Description Title is Required',
         ]);
 
-        $image = $request->file('service_image');
-        $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
-
-        //Image::make($image)->resize(1020,519)->save('upload/portfolio/'.$name_gen);
-        $save_url = 'upload/Service/'.$name_gen;
+        $imageName = $request->service_image->getClientOriginalName();  
+        $save_url = 'upload/Service/'.$imageName;
+        $request->service_image->move(public_path('upload/Service'), $imageName);
 
         Service::insert([
             'service_title' => $request->service_title,
@@ -40,6 +39,8 @@ class ServiceController extends Controller
             'service_image' =>  $save_url,
             'created_at' => Carbon::now(),
         ]);
+        dd( 'service_image');
+        
 
         $notification = array(
             'message' => 'Service Inserted Successfully', 
@@ -64,11 +65,9 @@ class ServiceController extends Controller
 
         if ($request->file('service_image')) 
         {
-            $image = $request->file('service_image');
-            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();  // 3434343443.jpg
-
-            //Image::make($image)->resize(1020,519)->save('upload/portfolio/'.$name_gen);
-            $save_url = 'upload/Service/'.$name_gen;
+            $imageName = $request->service_image->getClientOriginalName();  
+            $save_url = 'upload/Service/'.$imageName;
+            $request->service_image->move(public_path('upload/Service'), $imageName);
 
             Service::findOrFail($service_id)->update([
                 'service_title' => $request->service_title,
@@ -104,8 +103,8 @@ class ServiceController extends Controller
 
     public function DeleteService($id){
         $service = Service::findOrFail($id);
-        $img = $service->portfolio_image;
-       // unlink($img);
+        $img = $service->service_image;
+        unlink($img);
 
        Service::findOrFail($id)->delete();
 

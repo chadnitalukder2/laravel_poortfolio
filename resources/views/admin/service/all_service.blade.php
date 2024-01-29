@@ -39,11 +39,12 @@
                             <tbody>
                               
                                 @foreach($service as $key => $item)
+                              
                                 <tr>
                                     <td> {{ $key+1}} </td>
                                     <td> {{ $item->service_title }} </td>
                                     <td> {{ $item->service_description }} </td>
-                                    <td> <img src="{{ asset($item->service_image) }}" style="width: 60px; height: 50px;"> </td>
+                                    <td> <img src="{{ url($item->service_image) }}" style="width: 60px; height: 50px;"> </td>
 
                                     <td>
                                         <a href="{{ route('edit.service',$item->id) }}" class="btn btn-info sm" title="Edit Data">
