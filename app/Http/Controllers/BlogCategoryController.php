@@ -22,23 +22,31 @@ class BlogCategoryController extends Controller
 
     public function StoreBlogCategory(Request $request)
     {
-        $request->validate([
-            'blog_category' => 'required'
-        ],[ 
-            'blog_category.required' => 'Blog Category Name is Required',
-        ]);
-   
-        BlogCategory::insert([
-            'blog_category' => $request->blog_category,
-        ]);
-
-        
-        $notification = array(
-            'message' => 'Blog Category Inserted Successfully', 
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('all.blog_category')->with($notification);
+        try{
+            $request->validate([
+                'blog_category' => 'required'
+            ],[ 
+                'blog_category.required' => 'Blog Category Name is Required',
+            ]);
+       
+            BlogCategory::insert([
+                'blog_category' => $request->blog_category,
+            ]);
+    
+            
+            $notification = array(
+                'message' => 'Blog Category Inserted Successfully', 
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->route('all.blog_category')->with($notification);
+        }catch (\Throwable $th) {
+            $notification = array( 
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'success'
+            );
+        }
+      
 
     }//End
 
@@ -52,7 +60,8 @@ class BlogCategoryController extends Controller
 
     public function UpdateBlogCategory(Request $request, $id)
     {
-        
+        try{
+             
         BlogCategory::findOrFail($id)->update([
             'blog_category' => $request->blog_category,
         ]);
@@ -63,18 +72,33 @@ class BlogCategoryController extends Controller
         );
 
         return redirect()->route('all.blog_category')->with($notification);
+        }catch (\Throwable $th) {
+            $notification = array( 
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'success'
+            );
+        }
+       
 
     }//End
 
     public function DeleteBlogCategory($id)
     {
-        BlogCategory::findOrFail($id)->delete();
-        $notification = array(
-            'message' => 'Blog Category Deleted Successfully', 
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);   
+        try{
+            BlogCategory::findOrFail($id)->delete();
+            $notification = array(
+                'message' => 'Blog Category Deleted Successfully', 
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->back()->with($notification);   
+        }catch (\Throwable $th) {
+            $notification = array( 
+                'message' => 'Something Went Wrong',
+                'alert-type' => 'success'
+            );
+        }
+      
     }
 
 

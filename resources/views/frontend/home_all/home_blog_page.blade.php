@@ -11,7 +11,7 @@
             <div class="col-lg-4 col-md-6 col-sm-9">
                 <div class="blog__post__item">
                     <div class="blog__post__thumb">
-                        <a href="{{ route('blog.details',$item->id) }}"><img src="{{ asset('frontend/assets/img/blog/blog_post_thumb01.jpg') }}" alt=""></a>
+                        <a href="{{ route('blog.details',$item->id) }}"><img src="{{url($item->blog_image) }}" style="width: 430px; height: 327px;" alt=""></a>
                         <div class="blog__post__tags">
                             <a href="blog.html">{{ $item['category']['blog_category'] }}</a>
                         </div>
@@ -27,7 +27,7 @@
             @endforeach
         </div>
         <div class="blog__button text-center">
-            <a href="blog.html" class="btn">more blog</a>
+            <a href="{{ route('home.blog') }}" class="btn">more blog</a>
         </div>
     </div>
 </section>
