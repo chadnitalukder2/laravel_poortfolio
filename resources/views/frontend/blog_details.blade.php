@@ -1,6 +1,9 @@
 @extends('frontend.main_master')
 @section('main')
 
+@php
+$allMultiImage = App\Models\MultiImage::all();
+@endphp
 
   <main>
 
@@ -23,12 +26,11 @@
                 </div>
                 <div class="breadcrumb__wrap__icon">
                     <ul>
-                        <li><img src="assets/img/icons/breadcrumb_icon01.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon02.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon03.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon04.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon05.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon06.png" alt=""></li>
+                        @foreach($allMultiImage as $item)
+                        <li>
+                         <img class="light" src="{{ asset($item->multi_image ) }}" style="width: 80px; height: 80px;" alt="XD"> 
+                        </li>
+                        @endforeach
                     </ul>img
                 </div>
             </section>
@@ -222,7 +224,7 @@
                                     <a href="{{ route('home.blog') }}"><img src="{{ asset($all->blog_image) }} " alt=""></a>
                                 </div>
                                 <div class="rc__post__content">
-                                    <h5 class="title"><a href="blog-details.html">{{ $all->blog_title }}
+                                    <h5 class="title"><a href="{{ route('home.blog') }}">{{ $all->blog_title }}
                                         </a></h5>
                                     <span class="post-date"><i class="fal fa-calendar-alt"></i> {{ Carbon\Carbon::parse($all->created_at)->diffForHumans() }} </span>
                                 </div>

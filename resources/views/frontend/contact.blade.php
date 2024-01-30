@@ -5,6 +5,10 @@
     Contact | Website
 @endsection
 
+@php
+$allMultiImage = App\Models\MultiImage::all();
+@endphp
+
  <main>
 
             <!-- breadcrumb-area -->
@@ -26,12 +30,11 @@
                 </div>
                 <div class="breadcrumb__wrap__icon">
                     <ul>
-                        <li><img src="assets/img/icons/breadcrumb_icon01.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon02.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon03.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon04.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon05.png" alt=""></li>
-                        <li><img src="assets/img/icons/breadcrumb_icon06.png" alt=""></li>
+                        @foreach($allMultiImage as $item)
+                        <li>
+                         <img class="light" src="{{ asset($item->multi_image ) }}" style="width: 80px; height: 80px;" alt="XD"> 
+                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </section>
@@ -78,30 +81,30 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="contact__info">
                                 <div class="contact__info__icon">
-                                    <img src="assets/img/icons/contact_icon01.png" alt="">
+                                    <img src="{{ asset('frontend/assets/img/icons/contact_icon01.png') }}" alt="">
                                 </div>
                                 <div class="contact__info__content">
                                     <h4 class="title">address line</h4>
-                                    <span>Bowery St, New York, <br> NY 10013,USA</span>
+                                    <span>Derai, Sylhet  <br> Bangladesh</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="contact__info">
                                 <div class="contact__info__icon">
-                                    <img src="assets/img/icons/contact_icon02.png" alt="">
+                                    <img src="{{ asset('frontend/assets/img/icons/contact_icon02.png') }}" alt="">
                                 </div>
                                 <div class="contact__info__content">
                                     <h4 class="title">Phone Number</h4>
-                                    <span>+1255 - 568 - 6523</span>
-                                    <span>+1255 - 568 - 6523</span>
+                                    <span>+017 - 5350 - 7238</span>
+                                    <span>+013 - 1719 - 965</span>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
                             <div class="contact__info">
                                 <div class="contact__info__icon">
-                                    <img src="assets/img/icons/contact_icon03.png" alt="">
+                                    <img src="{{ asset('frontend/assets/img/icons/contact_icon03.png') }}" alt="">
                                 </div>
                                 <div class="contact__info__content">
                                     <h4 class="title">Mail Address</h4>
