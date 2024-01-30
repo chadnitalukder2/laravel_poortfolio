@@ -23,7 +23,7 @@
             <div class="col-xl-3">
                 <div class="services__item">
                     <div class="services__thumb">
-                        <a href="services-details.html"><img src="{{   url(  $item->service_image) }}"style="width: 320px; height: 240px;" alt=""></a>
+                        <a href="services-details.html"><img src="{{   url(  $item->service_image) }}" style="width: 320px; height: 240px;" alt=""></a>
                     </div>
                     <div class="services__content">
                         <div class="services__icon">

@@ -40,9 +40,10 @@
     <section class="services__details">
         <div class="container">
             <div class="row">
-                @foreach ($service  as $item )
-
+              
                 <div class="col-lg-8">
+                    @foreach ($service  as $item )
+
                     <div class="services__details__thumb">
                         <img src="{{   url(  $item->service_image) }}"   alt="">
                     </div>
@@ -50,9 +51,10 @@
                         <h2 class="title">{{ $item->service_title }}</h2>
                         <p>{!! $item->service_description !!}</p><br><br>
                     </div>
+                    
+                @endforeach
                 </div>
 
-                @endforeach
                 
                 <div class="col-lg-4">
                     <aside class="services__sidebar">
@@ -105,13 +107,15 @@
                             <h2 class="mail"><a href="mailto:Info@webmail.com">Info@webmail.com</a></h2>
                         </div>
                     </div>
+
                     <div class="col-lg-6">
                         <div class="homeContact__form">
-                            <form action="#">
-                                <input type="text" placeholder="Enter name*">
-                                <input type="email" placeholder="Enter mail*">
-                                <input type="number" placeholder="Enter number*">
-                                <textarea name="message" placeholder="Enter Massage*"></textarea>
+                            <form method="post" action="{{ route('store.message') }}" class="contact__form">
+                                 @csrf
+                                <input type="text" name="name" placeholder="Enter name*">
+                                <input type="email" name="email" placeholder="Enter mail*">
+                                <input type="number" name="phone" placeholder="Enter number*">
+                                <textarea  name="message" placeholder="Enter Massage*"></textarea>
                                 <button type="submit">Send Message</button>
                             </form>
                         </div>

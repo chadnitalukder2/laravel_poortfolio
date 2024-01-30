@@ -1,5 +1,6 @@
 @php
-$allfooter = App\Models\Footer::find(1);
+    $FooterController = new App\Http\Controllers\FooterController();
+    $allfooter  = $FooterController->getFooterPage();
 @endphp
 
 

@@ -17,6 +17,7 @@ class DemoController extends Controller
         $AboutController = new AboutController();
         $aboutSlide  = $AboutController->getAboutSlide();
 
+    
       
         //dd($homeslide->toArray());
         return view('frontend.index', compact('homeslide','aboutSlide'));
