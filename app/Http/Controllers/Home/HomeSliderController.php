@@ -15,7 +15,8 @@ class HomeSliderController extends Controller
     }
 
     public function getHomeSlide() {
-        $homeslide = HomeSlide::first();
+        try{
+            $homeslide = HomeSlide::first();
         //  dd($homeslide);
         if(!$homeslide){
             $homeslide = array( 
@@ -29,7 +30,14 @@ class HomeSliderController extends Controller
         }
 
         return $homeslide;
-    }
+        } catch (\Throwable $th) {
+                    $notification = array( 
+                        'message' => 'Something Went Wrong',
+                        'alert-type' => 'success'
+                    );
+                }
+        
+    }//End Method
 
     public function UpdateSlider(Request $request){
         try {

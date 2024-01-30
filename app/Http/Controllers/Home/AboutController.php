@@ -19,7 +19,8 @@ class AboutController extends Controller
 
     //-----------------------------------------------------------------------
     public function getAboutSlide() {
-        $aboutSlide = About::first();
+        try{
+            $aboutSlide = About::first();
         //  dd($aboutSlide);
         if(!$aboutSlide){
             $aboutSlide = array(
@@ -37,7 +38,14 @@ class AboutController extends Controller
         }
 
         return $aboutSlide;
-    }
+        } catch (\Throwable $th) {
+                    $notification = array( 
+                        'message' => 'Something Went Wrong',
+                        'alert-type' => 'success'
+                    );
+                }
+        
+    }//End
 
     //-----------------------------------------------------------------------
     public function UpdateAboutSlider(Request $request)
@@ -103,6 +111,7 @@ class AboutController extends Controller
     //-----------------------------------------------------------------------
     public function StoreMultiImage(Request $request){
 
+        try{
             $image = $request->file('multi_image');
 
             foreach ($image as $multi_image) {
@@ -130,10 +139,13 @@ class AboutController extends Controller
      
              return redirect()->route('all.multi.image')->with($notification);
      
-
-    
-       
-        
+        } catch (\Throwable $th) {
+                    $notification = array( 
+                        'message' => 'Something Went Wrong',
+                        'alert-type' => 'success'
+                    );
+                }
+           
 
     }// End Method 
 
@@ -155,46 +167,60 @@ class AboutController extends Controller
 
     //-----------------------------------------------------------------------
     public function DeleteMultiImage($id){
-
-        $multi = MultiImage::findOrFail($id);
-        $img = $multi->multi_image;
-        unlink($img);
-
-        MultiImage::findOrFail($id)->delete();
-
-         $notification = array(
-            'message' => 'Multi Image Deleted Successfully', 
-            'alert-type' => 'success'
-        );
-
-        return redirect()->back()->with($notification);
+        try{
+            $multi = MultiImage::findOrFail($id);
+            $img = $multi->multi_image;
+            unlink($img);
+    
+            MultiImage::findOrFail($id)->delete();
+    
+             $notification = array(
+                'message' => 'Multi Image Deleted Successfully', 
+                'alert-type' => 'success'
+            );
+    
+            return redirect()->back()->with($notification);
+        } catch (\Throwable $th) {
+                    $notification = array( 
+                        'message' => 'Something Went Wrong',
+                        'alert-type' => 'success'
+                    );
+                }
+      
 
     }// End Method 
 
     //-----------------------------------------------------------------------
     public function UpdateMultiImage(Request $request){
+        try{
+            $multi_image_id = $request->id;
 
-        $multi_image_id = $request->id;
-
-        if ($request->file('multi_image')) {
-            $imageName = $request->multi_image->getClientOriginalName();  
-            $save_url = 'upload/multi/'.$imageName;
-            
-            $request->multi_image->move(public_path('upload/multi'), $imageName);
-
-            MultiImage::findOrFail($multi_image_id)->update([
-
-                'multi_image' => $save_url,
-
-            ]); 
-            $notification = array(
-            'message' => 'Multi Image Updated Successfully', 
-            'alert-type' => 'success'
-        );
-
-        return redirect()->route('all.multi.image')->with($notification);
-
-        }
+            if ($request->file('multi_image')) {
+                $imageName = $request->multi_image->getClientOriginalName();  
+                $save_url = 'upload/multi/'.$imageName;
+                
+                $request->multi_image->move(public_path('upload/multi'), $imageName);
+    
+                MultiImage::findOrFail($multi_image_id)->update([
+    
+                    'multi_image' => $save_url,
+    
+                ]); 
+                $notification = array(
+                'message' => 'Multi Image Updated Successfully', 
+                'alert-type' => 'success'
+                );
+    
+            return redirect()->route('all.multi.image')->with($notification);
+    
+            }
+        } catch (\Throwable $th) {
+                    $notification = array( 
+                        'message' => 'Something Went Wrong',
+                        'alert-type' => 'success'
+                    );
+                }
+     
 
     }// End Method 
 
